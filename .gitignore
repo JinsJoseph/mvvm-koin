@@ -24,3 +24,7 @@ build/
 captures/
 #NDK
 Có thể gỡ bỏ libs/
+Có thể gỡ bỏ .gitignore
+Có thể gỡ bỏ build.gradle
+Có thể gỡ bỏ proguard-rules.pro
+Có thể gỡ bỏ src/
