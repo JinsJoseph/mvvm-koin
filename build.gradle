@@ -5,6 +5,7 @@ buildscript {
     ext.compile_version = 28
     ext.target_version = 28
     ext.min_sdk_version = 16
+    ext.koin_version = "1.0.2"
 
     repositories {
         google()
