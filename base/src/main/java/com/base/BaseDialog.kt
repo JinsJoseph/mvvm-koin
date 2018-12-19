@@ -76,9 +76,9 @@ abstract class BaseDialog<T : ViewDataBinding, V : ViewModel> : DialogFragment()
         val frag: Fragment? = fragManager.findFragmentByTag(tag)
         frag?.let {
             fragManager.beginTransaction()
-                .disallowAddToBackStack()
-                .remove(it)
-                .commitAllowingStateLoss()
+                    .disallowAddToBackStack()
+                    .remove(it)
+                    .commitAllowingStateLoss()
         }
     }
 
@@ -87,10 +87,10 @@ abstract class BaseDialog<T : ViewDataBinding, V : ViewModel> : DialogFragment()
         val frag: Fragment? = fragManager.findFragmentByTag(tag)
         frag?.let {
             fragManager.beginTransaction()
-                .disallowAddToBackStack()
-                .setCustomAnimations(aniIn, aniOut)
-                .remove(it)
-                .commitAllowingStateLoss()
+                    .disallowAddToBackStack()
+                    .setCustomAnimations(aniIn, aniOut)
+                    .remove(it)
+                    .commitAllowingStateLoss()
         }
     }
 

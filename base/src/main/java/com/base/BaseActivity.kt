@@ -98,8 +98,8 @@ abstract class BaseActivity<T : ViewDataBinding, V : ViewModelB<*>> : AppCompatA
 
     @Throws
     open fun openFragment(
-        resId: Int, fragmentClazz: Class<*>, args: Bundle?, addBackStack: Boolean,
-        vararg aniInt: Int
+            resId: Int, fragmentClazz: Class<*>, args: Bundle?, addBackStack: Boolean,
+            vararg aniInt: Int
     ) {
         val tag = fragmentClazz.simpleName
         try {

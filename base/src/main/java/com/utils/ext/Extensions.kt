@@ -14,6 +14,6 @@ import java.util.concurrent.TimeUnit
 fun ViewGroup.inflateExt(layoutId: Int) = LayoutInflater.from(context).inflate(layoutId, this, false)
 
 fun View.clickWithDebounce(debounceTime: Long = 600L, action: (view: View) -> Unit): Disposable =
-    RxView.clicks(this)
-        .throttleFirst(debounceTime, TimeUnit.MILLISECONDS, AndroidSchedulers.mainThread())
-        .subscribe { action(this) }
+        RxView.clicks(this)
+                .throttleFirst(debounceTime, TimeUnit.MILLISECONDS, AndroidSchedulers.mainThread())
+                .subscribe { action(this) }
