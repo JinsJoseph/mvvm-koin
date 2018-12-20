@@ -37,6 +37,6 @@ fun <T : Any> Fragment.argument(key: String) = lazy { arguments?.get(key) as T }
 /**
  * Retrieve property with default value from intent
  */
-fun <T : Any> Fragment.argument(key: String, defaultValue: T? = null) = lazy {
+fun <T : Any> Fragment.argument(key: String, defaultValue: T) = lazy {
     arguments?.get(key)  as? T ?: defaultValue
 }
