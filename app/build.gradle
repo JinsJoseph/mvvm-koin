@@ -48,8 +48,8 @@ dependencies {
     implementation "android.arch.lifecycle:extensions:1.1.1"
 
     //rx java
-    implementation "io.reactivex.rxjava2:rxjava:2.1.15"
-    implementation "io.reactivex.rxjava2:rxandroid:2.0.2"
+    implementation "io.reactivex.rxjava2:rxjava:2.2.3"
+    implementation "io.reactivex.rxjava2:rxandroid:2.1.0"
     //database
     implementation 'android.arch.persistence.room:rxjava2:1.1.1'
     kapt "android.arch.persistence.room:compiler:1.1.1"
@@ -63,18 +63,11 @@ dependencies {
     implementation 'com.intuit.sdp:sdp-android:1.0.5'
     implementation 'com.intuit.ssp:ssp-android:1.0.5'
 
-    //permission
-    implementation 'com.karumi:dexter:5.0.0'
     implementation 'com.amitshekhar.android:rx2-android-networking:1.0.2'
-    implementation 'de.hdodenhof:circleimageview:2.2.0'
     //font
     implementation 'uk.co.chrisjenx:calligraphy:2.3.0'
-    implementation 'fr.avianey.com.viewpagerindicator:library:2.4.1.1@aar'
-    implementation 'net.danlew:android.joda:2.9.9'
 
     implementation 'com.jakewharton.rxbinding2:rxbinding-appcompat-v7:2.1.1'
-//    implementation "org.koin:koin-android-architecture:1.0.2"
-//    implementation "org.koin:koin-core:1.0.2"
     implementation "org.koin:koin-android:$koin_version"
     implementation "org.koin:koin-android-viewmodel:$koin_version"
 }
