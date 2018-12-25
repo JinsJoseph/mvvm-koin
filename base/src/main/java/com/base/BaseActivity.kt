@@ -98,8 +98,8 @@ abstract class BaseActivity<T : ViewDataBinding, V : ViewModelB<*>> : AppCompatA
 
     @Throws
     open fun openFragment(
-            resId: Int, fragmentClazz: Class<*>, args: Bundle?, addBackStack: Boolean,
-            vararg aniInt: Int
+        resId: Int, fragmentClazz: Class<*>, args: Bundle?, addBackStack: Boolean,
+        vararg aniInt: Int
     ) {
         val tag = fragmentClazz.simpleName
         try {
@@ -136,6 +136,10 @@ abstract class BaseActivity<T : ViewDataBinding, V : ViewModelB<*>> : AppCompatA
      * @param msg
      */
     fun toast(msg: String) = Boast.makeText(this, msg).show()
+
+    fun toast(msg: String, duration: Int, cancelCurrent: Boolean) {
+        Boast.makeText(this, msg, duration).show(cancelCurrent)
+    }
 
     /**
      * Init dialog loading
