@@ -27,5 +27,8 @@ cache:
 script:
   - ./gradlew build
 
+before_install:
+  - yes | sdkmanager "platforms;android-28"
+  -
 after_success:
   - bash <(curl -s https://codecov.io/bash)
