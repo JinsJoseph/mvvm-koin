@@ -25,6 +25,8 @@ cache:
 
 script:
   - ./gradlew build
+before_install:
+  - touch ~/.android/repositories.cfg
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
