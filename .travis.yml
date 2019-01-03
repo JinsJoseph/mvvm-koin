@@ -10,11 +10,6 @@ android:
     - extra-android-support
     - addon-google_apis-google-28
 
-  licenses:
-    - 'android-sdk-preview-license-52d11cd2'
-    - 'android-sdk-license-.+'
-    - 'google-gdk-license-.+'
-
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
   - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
@@ -26,9 +21,6 @@ cache:
 
 script:
   - ./gradlew build
-
-before_install:
-  - yes | sudo ~/Library/Android/sdk/tools/bin/sdkmanager --licenses
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
