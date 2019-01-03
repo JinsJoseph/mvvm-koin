@@ -28,7 +28,7 @@ script:
   - ./gradlew build
 
 before_install:
-  - yes | sudo sdkmanager --licenses
+  - yes | sudo ~/Library/Android/sdk/tools/bin/sdkmanager --licenses
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
