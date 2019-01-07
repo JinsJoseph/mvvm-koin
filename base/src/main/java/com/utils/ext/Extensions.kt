@@ -39,3 +39,15 @@ inline fun <reified T> Gson.toList(jsonObject: JsonObject) =
         jsonObject,
         ListOfSomething<T>(T::class.java)
     )
+
+fun View.show() {
+    this.visibility = View.VISIBLE
+}
+
+fun View.hide() {
+    this.visibility = View.GONE
+}
+
+fun View.invisible() {
+    this.visibility = View.INVISIBLE
+}
