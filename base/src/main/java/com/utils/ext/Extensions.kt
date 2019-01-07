@@ -51,3 +51,5 @@ fun View.hide() {
 fun View.invisible() {
     this.visibility = View.INVISIBLE
 }
+
+fun View.isVisible() = this.visibility == View.VISIBLE

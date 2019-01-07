@@ -35,7 +35,7 @@ Download via **Maven**:
   <type>pom</type>
 </dependency>
 ```
-Current version 1.2.1
+
 ### License
 ```
 Copyright (C) 2018
