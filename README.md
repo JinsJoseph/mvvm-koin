@@ -1,4 +1,7 @@
 # Mvvm-architecture-koin
+
+[![Build Status](https://travis-ci.org/cuongnv219/mvvm-koin.svg?branch=master)](https://travis-ci.org/cuongnv219/mvvm-koin)
+
 Sample base mvvm
 This repository contains a detailed sample app that implements MVVM architecture using Koin, Room, RxJava, FastAndroidNetworking...
 
