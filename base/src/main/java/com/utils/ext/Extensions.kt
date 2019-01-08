@@ -18,27 +18,27 @@ import java.util.concurrent.TimeUnit
 fun ViewGroup.inflateExt(layoutId: Int) = LayoutInflater.from(context).inflate(layoutId, this, false)
 
 fun View.clickWithDebounce(debounceTime: Long = 600L, action: (view: View) -> Unit): Disposable =
-    RxView.clicks(this)
-        .throttleFirst(debounceTime, TimeUnit.MILLISECONDS, AndroidSchedulers.mainThread())
-        .subscribe { action(this) }
+        RxView.clicks(this)
+                .throttleFirst(debounceTime, TimeUnit.MILLISECONDS, AndroidSchedulers.mainThread())
+                .subscribe { action(this) }
 
 inline fun <reified T> Gson.toList(json: String) =
-    this.fromJson<List<T>>(
-        json,
-        ListOfSomething<T>(T::class.java)
-    )
+        this.fromJson<List<T>>(
+                json,
+                ListOfSomething<T>(T::class.java)
+        )
 
 inline fun <reified T> Gson.toList(jsonArr: JsonArray) =
-    this.fromJson<List<T>>(
-        jsonArr,
-        ListOfSomething<T>(T::class.java)
-    )
+        this.fromJson<List<T>>(
+                jsonArr,
+                ListOfSomething<T>(T::class.java)
+        )
 
 inline fun <reified T> Gson.toList(jsonObject: JsonObject) =
-    this.fromJson<List<T>>(
-        jsonObject,
-        ListOfSomething<T>(T::class.java)
-    )
+        this.fromJson<List<T>>(
+                jsonObject,
+                ListOfSomething<T>(T::class.java)
+        )
 
 fun View.show() {
     this.visibility = View.VISIBLE
@@ -53,3 +53,7 @@ fun View.invisible() {
 }
 
 fun View.isVisible() = this.visibility == View.VISIBLE
+
+fun View.setVisibility(isVisible: Boolean) {
+    this.visibility = if (isVisible) View.VISIBLE else View.GONE
+}
