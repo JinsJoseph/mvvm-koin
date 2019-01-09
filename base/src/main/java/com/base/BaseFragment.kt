@@ -157,14 +157,42 @@ abstract class BaseFragment<T : ViewDataBinding, V : ViewModelB<*>> : Fragment()
     }
 
     fun showDialog() {
-        if (activity is BaseActivity<*, *>) {
-            (activity as BaseActivity<*, *>).showDialog()
+        activity?.let {
+            if (it is BaseActivity<*, *>) {
+                it.showDialog()
+            }
         }
     }
 
     fun hideDialog() {
-        if (activity is BaseActivity<*, *>) {
-            (activity as BaseActivity<*, *>).hideDialog()
+        activity?.let {
+            if (it is BaseActivity<*, *>) {
+                it.hideDialog()
+            }
+        }
+    }
+
+    fun hideKeyboard() {
+        activity?.let {
+            if (it is BaseActivity<*, *>) {
+                it.hideKeyboard()
+            }
+        }
+    }
+
+    fun hideKeyboardOutSide(view: View) {
+        activity?.let {
+            if (it is BaseActivity<*, *>) {
+                it.hideKeyboardOutSide(view)
+            }
+        }
+    }
+
+    fun hideKeyboardOutSideText(view: View) {
+        activity?.let {
+            if (it is BaseActivity<*, *>) {
+                it.hideKeyboardOutSideText(view)
+            }
         }
     }
 }

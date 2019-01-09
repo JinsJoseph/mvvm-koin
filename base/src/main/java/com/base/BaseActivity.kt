@@ -10,6 +10,8 @@ import android.support.annotation.LayoutRes
 import android.support.v4.app.Fragment
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
+import android.view.View
+import com.utils.KeyboardUtils
 import com.widget.Boast
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper
 
@@ -98,8 +100,8 @@ abstract class BaseActivity<T : ViewDataBinding, V : ViewModelB<*>> : AppCompatA
 
     @Throws
     open fun openFragment(
-        resId: Int, fragmentClazz: Class<*>, args: Bundle?, addBackStack: Boolean,
-        vararg aniInt: Int
+            resId: Int, fragmentClazz: Class<*>, args: Bundle?, addBackStack: Boolean,
+            vararg aniInt: Int
     ) {
         val tag = fragmentClazz.simpleName
         try {
@@ -213,5 +215,17 @@ abstract class BaseActivity<T : ViewDataBinding, V : ViewModelB<*>> : AppCompatA
      */
     fun setCancelableDialog2(isCancelable: Boolean) {
         this.isCancelable2 = isCancelable
+    }
+
+    fun hideKeyboard() {
+        KeyboardUtils.hideKeyboard(this)
+    }
+
+    fun hideKeyboardOutSide(view: View) {
+        KeyboardUtils.hideKeyBoardWhenClickOutSide(view, this)
+    }
+
+    fun hideKeyboardOutSideText(view: View) {
+        KeyboardUtils.hideKeyBoardWhenClickOutSideText(view, this)
     }
 }
