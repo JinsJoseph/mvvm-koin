@@ -14,7 +14,7 @@ import com.widget.Boast
  * Created by Kaz on 09:48 8/20/18
  */
 abstract class BaseFragment<T : ViewDataBinding, V : ViewModelB<*>> : Fragment(),
-    ViewTreeObserver.OnGlobalLayoutListener {
+        ViewTreeObserver.OnGlobalLayoutListener {
 
     var rootView: View? = null
     var binding: T? = null
@@ -74,7 +74,12 @@ abstract class BaseFragment<T : ViewDataBinding, V : ViewModelB<*>> : Fragment()
     }
 
     @Throws
-    open fun openFragment(resId: Int, fragmentClazz: Class<*>, args: Bundle?, addBackStack: Boolean) {
+    open fun openFragment(
+            resId: Int,
+            fragmentClazz: Class<*>,
+            args: Bundle?,
+            addBackStack: Boolean
+    ) {
         val tag = fragmentClazz.simpleName
         try {
             val isExisted = childFragmentManager.popBackStackImmediate(tag, 0)    // IllegalStateException
@@ -106,8 +111,8 @@ abstract class BaseFragment<T : ViewDataBinding, V : ViewModelB<*>> : Fragment()
 
     @Throws
     open fun openFragment(
-        resId: Int, fragmentClazz: Class<*>, args: Bundle?, addBackStack: Boolean,
-        vararg aniInt: Int
+            resId: Int, fragmentClazz: Class<*>, args: Bundle?, addBackStack: Boolean,
+            vararg aniInt: Int
     ) {
         val tag = fragmentClazz.simpleName
         try {
@@ -148,6 +153,18 @@ abstract class BaseFragment<T : ViewDataBinding, V : ViewModelB<*>> : Fragment()
     fun toast(msg: String, duration: Int, cancelCurrent: Boolean) {
         context?.let {
             Boast.makeText(it, msg, duration).show(cancelCurrent)
+        }
+    }
+
+    fun showDialog() {
+        if (activity is BaseActivity<*, *>) {
+            (activity as BaseActivity<*, *>).showDialog()
+        }
+    }
+
+    fun hideDialog() {
+        if (activity is BaseActivity<*, *>) {
+            (activity as BaseActivity<*, *>).hideDialog()
         }
     }
 }

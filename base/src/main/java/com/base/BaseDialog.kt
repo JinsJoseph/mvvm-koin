@@ -99,4 +99,16 @@ abstract class BaseDialog<T : ViewDataBinding, V : ViewModel> : DialogFragment()
             Boast.makeText(it, msg).show()
         }
     }
+
+    fun showDialog() {
+        if (activity is BaseActivity<*, *>) {
+            (activity as BaseActivity<*, *>).showDialog()
+        }
+    }
+
+    fun hideDialog() {
+        if (activity is BaseActivity<*, *>) {
+            (activity as BaseActivity<*, *>).hideDialog()
+        }
+    }
 }

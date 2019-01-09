@@ -41,9 +41,9 @@ abstract class BaseActivity<T : ViewDataBinding, V : ViewModelB<*>> : AppCompatA
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         performDataBinding()
-        updateUI(savedInstanceState)
         initDialog()
         initDialog2()
+        updateUI(savedInstanceState)
     }
 
     private fun performDataBinding() {
