@@ -195,4 +195,12 @@ abstract class BaseFragment<T : ViewDataBinding, V : ViewModelB<*>> : Fragment()
             }
         }
     }
+
+    fun onBackPressed() {
+        activity?.onBackPressed()
+    }
+
+    fun finish() {
+        activity?.finish()
+    }
 }
