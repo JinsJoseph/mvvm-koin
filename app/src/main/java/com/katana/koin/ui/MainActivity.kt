@@ -6,6 +6,8 @@ import com.katana.koin.BR
 import com.katana.koin.R
 import com.katana.koin.databinding.ActivityMainBinding
 import com.katana.koin.ui.home.HomeFragment
+import com.utils.ext.setTextColorz
+import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), MainNavigator {
@@ -22,6 +24,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), MainNav
 //        toast(mainViewModel.getUser()!!)
 
         openFragment(R.id.content_home, HomeFragment::class.java, null, false)
+        tv.setTextColorz(R.color.colorPrimary)
     }
 
     override fun getViewModel(): MainViewModel = mainViewModel

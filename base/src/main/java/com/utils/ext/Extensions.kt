@@ -1,7 +1,9 @@
 package com.utils.ext
 
 import android.os.Build
+import android.support.annotation.ColorRes
 import android.support.annotation.DrawableRes
+import android.support.v4.content.ContextCompat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -83,4 +85,12 @@ fun TextView.setDrawableBottom(@DrawableRes bottom: Int) {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
         this.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, 0, bottom)
     }
+}
+
+fun View.setBackgroundColorz(@ColorRes resId: Int) {
+    this.setBackgroundColor(ContextCompat.getColor(context, resId))
+}
+
+fun TextView.setTextColorz(@ColorRes resId: Int) {
+    this.setTextColor(ContextCompat.getColor(context, resId))
 }
