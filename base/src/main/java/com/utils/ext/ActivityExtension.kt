@@ -1,6 +1,7 @@
 package com.utils.ext
 
 import android.app.Activity
+import android.app.Service
 import android.content.Context
 import android.content.Intent
 import android.net.ConnectivityManager
@@ -45,4 +46,15 @@ fun Activity.isConnectedInternet(): Boolean {
     } else {
         false
     }
+}
+
+fun Service.startActivity(clazz: Class<*>, bundle: Bundle) {
+    val intent = Intent(this, clazz)
+    intent.putExtras(bundle)
+    startActivity(intent)
+}
+
+fun Service.startActivity(clazz: Class<*>) {
+    val intent = Intent(this, clazz)
+    startActivity(intent)
 }
