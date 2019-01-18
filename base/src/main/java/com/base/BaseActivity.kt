@@ -228,4 +228,12 @@ abstract class BaseActivity<T : ViewDataBinding, V : ViewModelB<*>> : AppCompatA
     fun hideKeyboardOutSideText(view: View) {
         KeyboardUtils.hideKeyBoardWhenClickOutSideText(view, this)
     }
+
+    fun overridePendingTransitionEnter() {
+        overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left)
+    }
+
+    fun overridePendingTransitionExit() {
+        overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right)
+    }
 }
