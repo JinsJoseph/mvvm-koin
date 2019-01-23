@@ -8,8 +8,11 @@ import android.support.v4.app.FragmentStatePagerAdapter
 /**
  * Created by Kaz on 20:35 9/1/18
  */
-open class ViewPagerAdapter(fm: FragmentManager, private val fragmentList: List<Fragment>, private val titles:
-List<String>) : FragmentStatePagerAdapter(fm) {
+open class ViewPagerAdapter(
+        fm: FragmentManager,
+        private val fragmentList: List<Fragment>,
+        private val titles: List<String>
+) : FragmentStatePagerAdapter(fm) {
 
     override fun getItem(position: Int): Fragment {
         return this.fragmentList[position]
