@@ -171,8 +171,10 @@ abstract class BaseActivity<T : ViewDataBinding, V : ViewModelB<*>> : AppCompatA
      * Show dialog loading
      */
     open fun showDialog() {
-        if (!loading.isShowing) {
-            loading.show()
+        runOnUiThread {
+            if (!loading.isShowing) {
+                loading.show()
+            }
         }
     }
 
@@ -180,8 +182,10 @@ abstract class BaseActivity<T : ViewDataBinding, V : ViewModelB<*>> : AppCompatA
      * Show dialog loading 2
      */
     open fun showDialog2() {
-        if (!loading2.isShowing) {
-            loading2.show()
+        runOnUiThread {
+            if (!loading2.isShowing) {
+                loading2.show()
+            }
         }
     }
 
@@ -189,8 +193,10 @@ abstract class BaseActivity<T : ViewDataBinding, V : ViewModelB<*>> : AppCompatA
      * Hide dialog loading 2
      */
     open fun hideDialog2() {
-        if (loading2.isShowing) {
-            loading2.dismiss()
+        runOnUiThread {
+            if (loading2.isShowing) {
+                loading2.dismiss()
+            }
         }
     }
 
@@ -198,8 +204,10 @@ abstract class BaseActivity<T : ViewDataBinding, V : ViewModelB<*>> : AppCompatA
      * Hide dialog loading
      */
     open fun hideDialog() {
-        if (loading.isShowing) {
-            loading.dismiss()
+        runOnUiThread {
+            if (loading.isShowing) {
+                loading.dismiss()
+            }
         }
     }
 
