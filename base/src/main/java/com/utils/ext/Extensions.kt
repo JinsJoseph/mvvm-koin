@@ -4,9 +4,12 @@ import android.os.Build
 import android.support.annotation.ColorRes
 import android.support.annotation.DrawableRes
 import android.support.v4.content.ContextCompat
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.TextView
 import com.google.gson.Gson
 import com.google.gson.JsonArray
@@ -93,4 +96,17 @@ fun View.setBackgroundColorz(@ColorRes resId: Int) {
 
 fun TextView.setTextColorz(@ColorRes resId: Int) {
     this.setTextColor(ContextCompat.getColor(context, resId))
+}
+
+fun EditText.onTextChanged(text: (String?) -> Unit) {
+    this.addTextChangedListener(object : TextWatcher {
+        override fun afterTextChanged(s: Editable?) {
+        }
+
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            text(s.toString())
+        }
+    })
 }
