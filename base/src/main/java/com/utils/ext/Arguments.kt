@@ -40,3 +40,9 @@ fun <T : Any> Fragment.argument(key: String) = lazy { arguments?.get(key) as T }
 fun <T : Any> Fragment.argument(key: String, defaultValue: T) = lazy {
     arguments?.get(key)  as? T ?: defaultValue
 }
+
+inline fun <T : Fragment> T.withArgs(
+        argsBuilder: Bundle.() -> Unit): T =
+        this.apply {
+            arguments = Bundle().apply(argsBuilder)
+        }
