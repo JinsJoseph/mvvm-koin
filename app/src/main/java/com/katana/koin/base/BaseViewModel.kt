@@ -7,5 +7,7 @@ import com.utils.SchedulerProvider
 /**
  * Created by Kaz on 10:15 2018-12-19
  */
-open class BaseViewModel<N>(var dataManager: DataManager, var schedulerProvider: SchedulerProvider) :
-        ViewModelB<N>(schedulerProvider)
+open class BaseViewModel<N>(
+        var dataManager: DataManager,
+        var schedulerProvider: SchedulerProvider
+) : ViewModelB<N>(schedulerProvider)

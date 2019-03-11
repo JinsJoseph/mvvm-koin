@@ -15,7 +15,10 @@
       tools:ignore="GoogleAppIndexingWarning">
 
     <activity android:name=".ui.MainActivity">
-
+    </activity>
+    <activity android:name=".ui.login.LoginActivity">
+    </activity>
+    <activity android:name=".ui.splash.SplashActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
 
