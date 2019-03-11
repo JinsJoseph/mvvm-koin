@@ -33,7 +33,7 @@ dependencies {
     implementation "com.android.support:design:$android_version"
     implementation 'com.google.code.gson:gson:2.8.5'
 
-    implementation "io.reactivex.rxjava2:rxjava:2.2.3"
+    implementation "io.reactivex.rxjava2:rxkotlin:2.3.0"
     implementation "io.reactivex.rxjava2:rxandroid:2.1.0"
     //font
     implementation "uk.co.chrisjenx:calligraphy:2.3.0"
