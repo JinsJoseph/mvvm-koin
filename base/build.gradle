@@ -40,30 +40,30 @@ dependencies {
     implementation 'com.jakewharton.rxbinding2:rxbinding-appcompat-v7:2.1.1'
 }
 
-ext {
-    bintrayRepo = 'mvvm' // your repo name
-    bintrayName = 'base' // has to be same as your library module name
-    publishedGroupId = 'com.katana' // your module package name
-    libraryName = 'base'
-    artifact = 'base' // has to be same as your library module name
-    libraryDescription = 'Sample base mvvm. This repository contains a detailed sample app that implements MVVM ' +
-            'architecture using Koin, Room, RxJava, FastAndroidNetworking...'
-
-    siteUrl = 'https://github.com/cuongnv219/mvvm-koin'
-    gitUrl = 'https://github.com/cuongnv219/mvvm-koin.git'
-
-    libraryVersion = '1.0.0'
-    developerId = 'cuongnv219'
-    developerName = 'NguyenVanCuong'
-    developerEmail = 'cuongnv219@gmail.com'
-    licenseName = 'The Apache Software License, Version 2.0'
-    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-    allLicenses = ["Apache-2.0"]
-}
+//ext {
+//    bintrayRepo = 'mvvm' // your repo name
+//    bintrayName = 'base' // has to be same as your library module name
+//    publishedGroupId = 'com.katana' // your module package name
+//    libraryName = 'base'
+//    artifact = 'base' // has to be same as your library module name
+//    libraryDescription = 'Sample base mvvm. This repository contains a detailed sample app that implements MVVM ' +
+//            'architecture using Koin, Room, RxJava, FastAndroidNetworking...'
+//
+//    siteUrl = 'https://github.com/cuongnv219/mvvm-koin'
+//    gitUrl = 'https://github.com/cuongnv219/mvvm-koin.git'
+//
+//    libraryVersion = '1.0.0'
+//    developerId = 'cuongnv219'
+//    developerName = 'NguyenVanCuong'
+//    developerEmail = 'cuongnv219@gmail.com'
+//    licenseName = 'The Apache Software License, Version 2.0'
+//    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+//    allLicenses = ["Apache-2.0"]
+//}
 
 tasks.withType(Javadoc).all {
     enabled = false
 }
 
-apply from: 'https://raw.githubusercontent.com/numetriclabz/jcenter/master/installv.gradle'
-apply from: 'https://raw.githubusercontent.com/numetriclabz/jcenter/master/bintrayv.gradle'
+//apply from: 'https://raw.githubusercontent.com/numetriclabz/jcenter/master/installv.gradle'
+//apply from: 'https://raw.githubusercontent.com/numetriclabz/jcenter/master/bintrayv.gradle'
