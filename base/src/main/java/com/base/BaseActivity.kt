@@ -25,6 +25,7 @@ abstract class BaseActivity<T : ViewDataBinding, V : ViewModelB<*>> : AppCompatA
     lateinit var loading2: AlertDialog
     private var isCancelable = false
     private var isCancelable2 = false
+    var isCheckCountInBackPress = true
 
     @LayoutRes
     protected abstract fun getLayoutId(): Int
@@ -60,7 +61,7 @@ abstract class BaseActivity<T : ViewDataBinding, V : ViewModelB<*>> : AppCompatA
 
     override fun onBackPressed() {
         val count = supportFragmentManager.backStackEntryCount
-        if (count == 1) {
+        if (count == 1 && isCheckCountInBackPress) {
             finish()
         } else {
             super.onBackPressed()
