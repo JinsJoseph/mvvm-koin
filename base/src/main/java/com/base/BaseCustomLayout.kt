@@ -3,6 +3,8 @@ package com.base
 import android.content.Context
 import android.content.res.TypedArray
 import android.support.annotation.LayoutRes
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.RelativeLayout
@@ -47,6 +49,35 @@ abstract class BaseCustomLayout : RelativeLayout {
                 a.recycle()
             }
         }
+    }
+
+    fun <VH : RecyclerView.ViewHolder> setUpRcv(rcv: RecyclerView, adapter: RecyclerView.Adapter<VH>) {
+        rcv.setHasFixedSize(true)
+        rcv.layoutManager = LinearLayoutManager(context)
+        rcv.adapter = adapter
+    }
+
+    fun <VH : RecyclerView.ViewHolder> setUpRcv(
+            rcv: RecyclerView, adapter:
+            RecyclerView.Adapter<VH>,
+            isHasFixedSize: Boolean,
+            isNestedScrollingEnabled: Boolean
+    ) {
+        rcv.setHasFixedSize(isHasFixedSize)
+        rcv.layoutManager = LinearLayoutManager(context)
+        rcv.adapter = adapter
+        rcv.isNestedScrollingEnabled = isNestedScrollingEnabled
+    }
+
+    fun <VH : RecyclerView.ViewHolder> setUpRcv(
+            rcv: RecyclerView, adapter:
+            RecyclerView.Adapter<VH>,
+            isNestedScrollingEnabled: Boolean
+    ) {
+        rcv.setHasFixedSize(true)
+        rcv.layoutManager = LinearLayoutManager(context)
+        rcv.adapter = adapter
+        rcv.isNestedScrollingEnabled = isNestedScrollingEnabled
     }
 
     open fun initDataFromStyleable(a: TypedArray) {}

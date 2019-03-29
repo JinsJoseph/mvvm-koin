@@ -10,6 +10,8 @@ import android.support.annotation.LayoutRes
 import android.support.v4.app.Fragment
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.utils.KeyboardUtils
 import com.widget.Boast
@@ -244,5 +246,34 @@ abstract class BaseActivity<T : ViewDataBinding, V : ViewModelB<*>> : AppCompatA
 
     fun overridePendingTransitionExit() {
         overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right)
+    }
+
+    fun <VH : RecyclerView.ViewHolder> setUpRcv(rcv: RecyclerView, adapter: RecyclerView.Adapter<VH>) {
+        rcv.setHasFixedSize(true)
+        rcv.layoutManager = LinearLayoutManager(this)
+        rcv.adapter = adapter
+    }
+
+    fun <VH : RecyclerView.ViewHolder> setUpRcv(
+            rcv: RecyclerView, adapter:
+            RecyclerView.Adapter<VH>,
+            isHasFixedSize: Boolean,
+            isNestedScrollingEnabled: Boolean
+    ) {
+        rcv.setHasFixedSize(isHasFixedSize)
+        rcv.layoutManager = LinearLayoutManager(this)
+        rcv.adapter = adapter
+        rcv.isNestedScrollingEnabled = isNestedScrollingEnabled
+    }
+
+    fun <VH : RecyclerView.ViewHolder> setUpRcv(
+            rcv: RecyclerView, adapter:
+            RecyclerView.Adapter<VH>,
+            isNestedScrollingEnabled: Boolean
+    ) {
+        rcv.setHasFixedSize(true)
+        rcv.layoutManager = LinearLayoutManager(this)
+        rcv.adapter = adapter
+        rcv.isNestedScrollingEnabled = isNestedScrollingEnabled
     }
 }

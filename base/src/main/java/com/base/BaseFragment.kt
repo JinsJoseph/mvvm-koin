@@ -7,6 +7,8 @@ import android.databinding.ViewDataBinding
 import android.os.Bundle
 import android.support.annotation.LayoutRes
 import android.support.v4.app.Fragment
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.*
 import com.widget.Boast
 
@@ -71,6 +73,35 @@ abstract class BaseFragment<T : ViewDataBinding, V : ViewModelB<*>> : Fragment()
             }
         }
         return rootView
+    }
+
+    fun <VH : RecyclerView.ViewHolder> setUpRcv(rcv: RecyclerView, adapter: RecyclerView.Adapter<VH>) {
+        rcv.setHasFixedSize(true)
+        rcv.layoutManager = LinearLayoutManager(context)
+        rcv.adapter = adapter
+    }
+
+    fun <VH : RecyclerView.ViewHolder> setUpRcv(
+            rcv: RecyclerView, adapter:
+            RecyclerView.Adapter<VH>,
+            isHasFixedSize: Boolean,
+            isNestedScrollingEnabled: Boolean
+    ) {
+        rcv.setHasFixedSize(isHasFixedSize)
+        rcv.layoutManager = LinearLayoutManager(context)
+        rcv.adapter = adapter
+        rcv.isNestedScrollingEnabled = isNestedScrollingEnabled
+    }
+
+    fun <VH : RecyclerView.ViewHolder> setUpRcv(
+            rcv: RecyclerView, adapter:
+            RecyclerView.Adapter<VH>,
+            isNestedScrollingEnabled: Boolean
+    ) {
+        rcv.setHasFixedSize(true)
+        rcv.layoutManager = LinearLayoutManager(context)
+        rcv.adapter = adapter
+        rcv.isNestedScrollingEnabled = isNestedScrollingEnabled
     }
 
     @Throws
