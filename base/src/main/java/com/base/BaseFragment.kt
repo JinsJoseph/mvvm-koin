@@ -234,4 +234,12 @@ abstract class BaseFragment<T : ViewDataBinding, V : ViewModelB<*>> : Fragment()
     fun finish() {
         activity?.finish()
     }
+
+    fun clearAllBackStack() {
+        activity?.let {
+            if (it is BaseActivity<*, *>) {
+                it.clearAllBackStack()
+            }
+        }
+    }
 }

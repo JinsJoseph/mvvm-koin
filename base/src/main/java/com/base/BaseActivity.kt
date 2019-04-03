@@ -276,4 +276,11 @@ abstract class BaseActivity<T : ViewDataBinding, V : ViewModelB<*>> : AppCompatA
         rcv.adapter = adapter
         rcv.isNestedScrollingEnabled = isNestedScrollingEnabled
     }
+
+    fun clearAllBackStack() {
+        val fm = supportFragmentManager
+        for (i in 0 until fm.backStackEntryCount) {
+            fm.popBackStack()
+        }
+    }
 }
