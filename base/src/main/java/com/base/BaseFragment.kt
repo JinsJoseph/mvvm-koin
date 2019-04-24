@@ -5,6 +5,7 @@ package com.base
 import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding
 import android.os.Bundle
+import android.os.Parcelable
 import android.support.annotation.LayoutRes
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -18,8 +19,12 @@ import com.widget.Boast
 abstract class BaseFragment<T : ViewDataBinding, V : ViewModelB<*>> : Fragment(),
         ViewTreeObserver.OnGlobalLayoutListener {
 
-    var rootView: View? = null
+    private var rootView: View? = null
     var binding: T? = null
+
+    companion object {
+        const val KEY_TAG = "KEY"
+    }
 
     protected abstract fun getViewModel(): V
 
@@ -52,8 +57,9 @@ abstract class BaseFragment<T : ViewDataBinding, V : ViewModelB<*>> : Fragment()
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val layoutId = getLayoutId()
         if (rootView != null) {
-            val parent = rootView!!.parent as ViewGroup
-            parent.removeView(rootView)
+            //todo fix something
+            val parent = rootView!!.parent as ViewGroup?
+            parent?.removeView(rootView)
         } else {
             try {
                 binding = DataBindingUtil.inflate(inflater, layoutId, container, false)
@@ -67,12 +73,17 @@ abstract class BaseFragment<T : ViewDataBinding, V : ViewModelB<*>> : Fragment()
                 binding!!.setVariable(getBindingVariable(), getViewModel())
                 binding!!.executePendingBindings()
 
-                updateUI(savedInstanceState)
+//                updateUI(savedInstanceState)
             } catch (e: InflateException) {
                 e.printStackTrace()
             }
         }
         return rootView
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        updateUI(savedInstanceState)
     }
 
     fun <VH : RecyclerView.ViewHolder> setUpRcv(rcv: RecyclerView, adapter: RecyclerView.Adapter<VH>) {
@@ -241,5 +252,11 @@ abstract class BaseFragment<T : ViewDataBinding, V : ViewModelB<*>> : Fragment()
 
     fun finish() {
         activity?.finish()
+    }
+
+    fun <T : BaseKey> getKey(): T {
+        val args = arguments ?: throw IllegalStateException("Fragment cannot have null arguments.")
+        return args.getParcelable<Parcelable>("KEY") as T?
+                ?: throw IllegalStateException("Fragment cannot have null key")
     }
 }

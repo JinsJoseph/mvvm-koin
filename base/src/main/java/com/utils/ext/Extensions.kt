@@ -1,8 +1,10 @@
 package com.utils.ext
 
 import android.os.Build
+import android.os.Bundle
 import android.support.annotation.ColorRes
 import android.support.annotation.DrawableRes
+import android.support.v4.app.Fragment
 import android.support.v4.content.ContextCompat
 import android.text.Editable
 import android.text.TextWatcher
@@ -110,3 +112,6 @@ fun EditText.onTextChanged(text: (String?) -> Unit) {
         }
     })
 }
+
+val Fragment.requireArguments: Bundle
+    get() = arguments ?: throw Exception("No arguments found!")

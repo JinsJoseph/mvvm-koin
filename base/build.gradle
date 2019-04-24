@@ -38,6 +38,7 @@ dependencies {
     //font
     implementation "uk.co.chrisjenx:calligraphy:2.3.0"
     implementation 'com.jakewharton.rxbinding2:rxbinding-appcompat-v7:2.1.1'
+    api 'com.github.Zhuinden:state-bundle:1.2.1'
 }
 
 //ext {
