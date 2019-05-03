@@ -12,7 +12,7 @@ import java.lang.ref.WeakReference
 abstract class ViewModelB<N>(private var schedulerProvider: SchedulerProvider) : ViewModel() {
 
     private lateinit var navigator: WeakReference<N>
-    var compositeDisposable: CompositeDisposable = CompositeDisposable()
+    private var compositeDisposable: CompositeDisposable = CompositeDisposable()
 
     fun setNavigator(navigator: N) {
         this.navigator = WeakReference(navigator)
@@ -27,5 +27,13 @@ abstract class ViewModelB<N>(private var schedulerProvider: SchedulerProvider) :
 
     fun launch(job: () -> Disposable) {
         compositeDisposable.add(job())
+    }
+
+    fun dispose() {
+        compositeDisposable.dispose()
+    }
+
+    fun clear() {
+        compositeDisposable.clear()
     }
 }
