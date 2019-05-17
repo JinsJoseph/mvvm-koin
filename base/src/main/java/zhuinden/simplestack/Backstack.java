@@ -184,6 +184,33 @@ public class Backstack {
      * @param newKey the target state.
      */
     @MainThread
+    public void goToWithBackWard(@NonNull Object newKey) {
+        checkNewKey(newKey);
+
+        assertCorrectThread();
+
+        List<?> activeHistory = selectActiveHistory();
+        HistoryBuilder historyBuilder = History.builderFrom(activeHistory);
+
+        int direction;
+        if (historyBuilder.contains(newKey)) {
+            historyBuilder.removeUntil(newKey);
+            direction = StateChange.BACKWARD;
+        } else {
+            historyBuilder.add(newKey);
+            direction = StateChange.BACKWARD;
+        }
+        setHistory(historyBuilder.build(), direction);
+    }
+
+    /**
+     * Goes to the new key.
+     * If the key is found, then it goes backward to the existing key.
+     * If the key is not found, then it goes forward to the newly added key.
+     *
+     * @param newKey the target state.
+     */
+    @MainThread
     public void goToNoAnimation(@NonNull Object newKey) {
         checkNewKey(newKey);
 
