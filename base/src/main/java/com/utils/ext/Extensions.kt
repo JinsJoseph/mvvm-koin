@@ -6,6 +6,7 @@ import android.support.annotation.ColorRes
 import android.support.annotation.DrawableRes
 import android.support.v4.app.Fragment
 import android.support.v4.content.ContextCompat
+import android.support.v4.view.ViewPager
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
@@ -20,6 +21,7 @@ import com.jakewharton.rxbinding2.view.RxView
 import com.utils.ListOfSomething
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
+import java.util.*
 import java.util.concurrent.TimeUnit
 
 /**
@@ -33,85 +35,97 @@ fun View.clickWithDebounce(debounceTime: Long = 600L, action: (view: View) -> Un
                 .subscribe { action(this) }
 
 inline fun <reified T> Gson.toList(json: String) =
-        this.fromJson<List<T>>(
+        fromJson<List<T>>(
                 json,
                 ListOfSomething<T>(T::class.java)
         )
 
 inline fun <reified T> Gson.toList(jsonArr: JsonArray) =
-        this.fromJson<List<T>>(
+        fromJson<List<T>>(
                 jsonArr,
                 ListOfSomething<T>(T::class.java)
         )
 
 inline fun <reified T> Gson.toList(jsonObject: JsonObject) =
-        this.fromJson<List<T>>(
+        fromJson<List<T>>(
                 jsonObject,
                 ListOfSomething<T>(T::class.java)
         )
 
 fun View.show() {
-    this.visibility = View.VISIBLE
+    visibility = View.VISIBLE
 }
 
 fun View.hide() {
-    this.visibility = View.GONE
+    visibility = View.GONE
 }
 
 fun View.invisible() {
     this.visibility = View.INVISIBLE
 }
 
-fun View.isVisible() = this.visibility == View.VISIBLE
+fun View.isVisible() = visibility == View.VISIBLE
 
 fun View.setVisibility(isVisible: Boolean) {
-    this.visibility = if (isVisible) View.VISIBLE else View.GONE
+    visibility = if (isVisible) View.VISIBLE else View.GONE
 }
 
 fun TextView.setDrawableStart(@DrawableRes start: Int) {
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-        this.setCompoundDrawablesRelativeWithIntrinsicBounds(start, 0, 0, 0)
-    }
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) setCompoundDrawablesRelativeWithIntrinsicBounds(start, 0, 0, 0)
 }
 
 fun TextView.setDrawableTop(@DrawableRes top: Int) {
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-        this.setCompoundDrawablesRelativeWithIntrinsicBounds(0, top, 0, 0)
-    }
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) setCompoundDrawablesRelativeWithIntrinsicBounds(0, top, 0, 0)
 }
 
 fun TextView.setDrawableEnd(@DrawableRes end: Int) {
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-        this.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, end, 0)
-    }
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, end, 0)
 }
 
 fun TextView.setDrawableBottom(@DrawableRes bottom: Int) {
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-        this.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, 0, bottom)
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, 0, bottom)
+}
+
+fun View.setBackgroundColorz(@ColorRes resId: Int) = setBackgroundColor(ContextCompat.getColor(context, resId))
+
+fun TextView.setTextColorz(@ColorRes resId: Int) = setTextColor(ContextCompat.getColor(context, resId))
+
+fun EditText.onTextChanged(text: (String?) -> Unit) = addTextChangedListener(object : TextWatcher {
+    override fun afterTextChanged(s: Editable?) {
     }
-}
 
-fun View.setBackgroundColorz(@ColorRes resId: Int) {
-    this.setBackgroundColor(ContextCompat.getColor(context, resId))
-}
+    override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
-fun TextView.setTextColorz(@ColorRes resId: Int) {
-    this.setTextColor(ContextCompat.getColor(context, resId))
-}
+    override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+        text(s.toString())
+    }
+})
 
-fun EditText.onTextChanged(text: (String?) -> Unit) {
-    this.addTextChangedListener(object : TextWatcher {
-        override fun afterTextChanged(s: Editable?) {
+val Fragment.requireArguments: Bundle
+    get() = arguments ?: throw Exception("No arguments found!")
+
+fun ViewPager.onPageSelected(position: (Int?) -> Unit) {
+    addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+        override fun onPageScrollStateChanged(p0: Int) {
         }
 
-        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+        override fun onPageScrolled(p0: Int, p1: Float, p2: Int) {
+        }
 
-        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-            text(s.toString())
+        override fun onPageSelected(position: Int) {
+            position(position)
         }
     })
 }
 
-val Fragment.requireArguments: Bundle
-    get() = arguments ?: throw Exception("No arguments found!")
+fun String.capitalizedWord(): String {
+    val words = replace('_', ' ').toLowerCase(Locale.getDefault())
+            .split(" ".toRegex())
+            .dropLastWhile { it.isEmpty() }
+            .toTypedArray()
+    var aString = ""
+    for (word in words) {
+        aString = aString + word.substring(0, 1).toUpperCase(Locale.getDefault()) + word.substring(1) + " "
+    }
+    return aString
+}
